@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LA MEGA PAGINA</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: #00aaff;
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: aquamarine;
+        padding: 10px 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+      }
+
+      .navbar li {
+        display: inline-block;
+        margin: 0 10px;
+      }
+
+      .navbar a {
+        color: black;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+      }
+
+      .navbar a:hover {
+        background-color: rgb(255, 251, 0);
+        color: black;
+      }
+
+      /* Logo */
+      .logo {
+        max-width: 120px;
+        display: block;
+        margin: 10px auto;
+      }
+
+      /* Slider */
+      .slider {
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+        position: relative;
+        background-color: #111;
+      }
+
+      .slides {
+        display: flex;
+        width: 300%;
+        animation: slide 12s infinite;
+      }
+
+      .slides img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      @keyframes slide {
+        0% { transform: translateX(0); }
+        33% { transform: translateX(-100%); }
+        66% { transform: translateX(-200%); }
+        100% { transform: translateX(0); }
+      }
+
+      main {
+        padding: 30px 20px;
+        text-align: center;
+      }
+
+      main h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #00aaff;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      .subtexto {
+        font-size: 1.1rem;
+        color: #a6cde2;
+        margin-top: -15px;
+        margin-bottom: 20px;
+      }
+
+      main p {
+        font-size: 1.25rem;
+        color: #d4dee2;
+        max-width: 600px;
+        margin: 10px auto;
+        line-height: 1.6;
+      }
+
+      /* Productos */
+      .productos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 40px;
+      }
+
+      .producto {
+        background-color: #111;
+        border: 1px solid #00aaff;
+        border-radius: 10px;
+        padding: 20px;
+        width: 250px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .producto:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0, 170, 255, 0.6);
+      }
+
+      .producto img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      .producto h3 {
+        color: #00aaff;
+        margin-bottom: 10px;
+      }
+
+      .producto p {
+        color: #d4dee2;
+        font-size: 0.95rem;
+      }
+
+      button {
+        background-color: #00aaff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: #0088cc;
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: #111;
+        padding: 20px;
+        border: 2px solid #00aaff;
+        border-radius: 10px;
+        text-align: center;
+        max-width: 400px;
+        color: white;
+        box-shadow: 0 0 20px rgba(0, 170, 255, 0.7);
+      }
+
+      .modal-content img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+
+      .close-btn {
+        background-color: #ff5555;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        color: white;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+
+      .close-btn:hover {
+        background-color: #cc0000;
+      }
+
+      /* Acerca */
+      .acerca {
+        margin-top: 60px;
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #111;
+        border-top: 2px solid #00aaff;
+        border-bottom: 2px solid #00aaff;
+      }
+
+      .acerca h2 {
+        color: #00aaff;
+        margin-bottom: 20px;
+      }
+
+      .acerca p {
+        color: #d4dee2;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Galería */
+      .galeria {
+        margin-top: 60px;
+        text-align: center;
+      }
+
+      .galeria h2 {
+        font-size: 2rem;
+        color: #00aaff;
+        margin-bottom: 20px;
+      }
+
+      .galeria .productos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+      }
+
+      .galeria .producto {
+        background-color: #0d0d0d;
+        border: 2px solid #00aaff;
+        border-radius: 10px;
+        padding: 10px;
+        width: 220px;
+        text-align: center;
+        color: white;
+        transition: transform 0.3s ease;
+      }
+
+      .galeria .producto:hover {
+        transform: scale(1.05);
+      }
+
+      .galeria .producto img {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .galeria .producto h3 {
+        color: #00aaff;
+        margin: 10px 0 5px 0;
+      }
+
+      .galeria .producto p {
+        color: #ddd;
+        font-size: 0.9em;
+      }
+
+      /* Contacto */
+      .contacto {
+        margin-top: 60px;
+        padding: 40px 20px;
+        background-color: #111;
+        text-align: center;
+      }
+
+      .contacto h2 {
+        color: #00aaff;
+        margin-bottom: 20px;
+      }
+
+      .contacto p {
+        color: #d4dee2;
+        margin: 5px 0;
+      }
+
+      footer {
+        margin-top: 40px;
+        text-align: center;
+        padding: 10px 0;
+        background-color: #222;
+        font-size: 14px;
+        color: #00aaff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header id="inicio">
+      <img src="imagen/logo.png" alt="Logo del sitio" class="logo" />
+
+      <nav class="navbar">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#acerca">Acerca</a></li>
+          <li><a href="#contacto">Contáctenos</a></li>
+        </ul>
+      </nav>
+
+      <div class="slider">
+        <div class="slides">
+          <img src="imagen/slider.jpg" alt="Imagen 1 del slider" />
+          <img src="imagen/slider2.jpg" alt="Imagen 2 del slider" />
+          <img src="imagen/slider3.jpg" alt="Imagen 3 del slider" />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <h1>Bienvenido al mega sitio web de hoy</h1>
+      <p class="subtexto">Venta de suplementos deportivos</p>
+      <p>Una página moderna con navegación fluida y secciones dinámicas.</p>
+
+      <!-- Sección de productos -->
+      <section id="servicios" class="productos">
+        <div class="producto" data-nombre="Proteína Whey" data-descripcion="Fórmula avanzada para el crecimiento muscular, con 24g de proteína por porción y aminoácidos esenciales." data-precio="$150.000" data-imagen="imagen/producto1.jpg">
+          <img src="imagen/producto1.jpg" alt="Proteína Whey" />
+          <h3>Proteína Whey</h3>
+          <p>Fórmula avanzada para el crecimiento muscular.</p>
+          <button onclick="mostrarModal(this)">Ver más</button>
+        </div>
+
+        <div class="producto" data-nombre="Creatina Micronizada" data-descripcion="Mejora la fuerza, el rendimiento y acelera la recuperación muscular después del entrenamiento." data-precio="$95.000" data-imagen="imagen/producto2.jpg">
+          <img src="imagen/producto2.jpg" alt="Creatina Micronizada" />
+          <h3>Creatina Micronizada</h3>
+          <p>Aumenta la fuerza y el rendimiento físico.</p>
+          <button onclick="mostrarModal(this)">Ver más</button>
+        </div>
+
+        <div class="producto" data-nombre="Pre-entreno" data-descripcion="Suplemento para maximizar energía, enfoque y resistencia antes del entrenamiento." data-precio="$120.000" data-imagen="imagen/producto3.jpeg">
+          <img src="imagen/producto3.jpeg" alt="Pre-entreno" />
+          <h3>Pre-entreno</h3>
+          <p>Mejora tu energía, enfoque y resistencia.</p>
+          <button onclick="mostrarModal(this)">Ver más</button>
+        </div>
+      </section>
+
+      <!-- Modal -->
+      <div id="modalProducto" class="modal">
+        <div class="modal-content">
+          <img id="modalImagen" src="" alt="">
+          <h2 id="modalNombre"></h2>
+          <p id="modalDescripcion"></p>
+          <h3 id="modalPrecio"></h3>
+          <button class="close-btn" onclick="cerrarModal()">Cerrar</button>
+        </div>
+      </div>
+
+      <!-- Sección Acerca -->
+      <section id="acerca" class="acerca">
+        <h2>Sobre Nosotros</h2>
+        <p>
+          En La Mega Página nos apasiona el rendimiento y la salud. Nuestro objetivo es ofrecer suplementos deportivos de alta calidad para ayudarte a alcanzar tus metas fitness con confianza y energía.
+        </p>
+      </section>
+
+      <!-- Sección Galería -->
+      <section class="galeria">
+        <h2>Galería de Productos</h2>
+        <div class="productos">
+          <div class="producto">
+            <img src="imagen/galeria1.jpeg" alt="Prostar Whey" />
+            <h3>Prostar Whey</h3>
+            <p>💰 Precio: $180.000 COP</p>
+          </div>
+
+          <div class="producto">
+            <img src="imagen/galeria2.jpg" alt="Gold Standard Whey" />
+            <h3>Gold Standard Whey</h3>
+            <p>💰 Precio: $210.000 COP</p>
+          </div>
+
+          <div class="producto">
+            <img src="imagen/galeria3.jpeg" alt="ISO 100 Dymatize" />
+            <h3>ISO 100 Dymatize</h3>
+            <p>💰 Precio: $250.000 COP</p>
+          </div>
+
+          <div class="producto">
+            <img src="imagen/galeria4.png" alt="BiPro Classic" />
+            <h3>BiPro Classic</h3>
+            <p>💰 Precio: $190.000 COP</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <section id="contacto" class="contacto">
+        <h2>Contáctenos</h2>
+        <p>📞 Teléfono: +57 300 123 4567</p>
+        <p>📧 Correo: contacto@lamegapagina.com</p>
+        <p>📍 Dirección: Calle Fitness #24 - Bogotá, Colombia</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 La Mega Página de tus SUPPS 💻. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+      function mostrarModal(btn) {
+        const producto = btn.parentElement;
+        document.getElementById("modalNombre").textContent = producto.dataset.nombre;
+        document.getElementById("modalDescripcion").textContent = producto.dataset.descripcion;
+        document.getElementById("modalPrecio").textContent = producto.dataset.precio;
+        document.getElementById("modalImagen").src = producto.dataset.imagen;
+        document.getElementById("modalProducto").style.display = "flex";
+      }
+
+      function cerrarModal() {
+        document.getElementById("modalProducto").style.display = "none";
+      }
+
+      window.onclick = function(e) {
+        if (e.target === document.getElementById("modalProducto")) {
+          cerrarModal();
+        }
+      }
+    </script>
+  </body>
+</html>
